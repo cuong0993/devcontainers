@@ -50,6 +50,9 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+      - name: Get lowercase repo name
+        id: lowercase-repo
+        run: echo "repo=${GITHUB_REPOSITORY@L}" >> $GITHUB_OUTPUT
 
       # Login against a Docker registry except on PR
       # https://github.com/docker/login-action
@@ -65,6 +68,6 @@ jobs:
         uses: devcontainers/ci@v0.3
         with:
           subFolder: src/${{ matrix.folder }}
-          imageName: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}/${{ matrix.folder }}
-          cacheFrom: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}/${{ matrix.folder }}
+          imageName: ${{ env.REGISTRY }}/${{ steps.lowercase-repo.outputs.repo }}/${{ matrix.folder }}
+          cacheFrom: ${{ env.REGISTRY }}/${{ steps.lowercase-repo.outputs.repo }}/${{ matrix.folder }}
           refFilterForPush: "refs/heads/main"
