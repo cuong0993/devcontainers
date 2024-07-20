@@ -1,0 +1,17 @@
+// More info: https://containers.dev/implementors/json_reference/
+{
+	"image": "mcr.microsoft.com/devcontainers/javascript-node:latest",
+	"features": {
+		"ghcr.io/devcontainers/features/docker-in-docker:2": {}
+	},
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"mads-hartmann.bash-ide-vscode",
+				"dbaeumer.vscode-eslint",
+				"github.vscode-github-actions"
+			]
+		}
+	},
+	"postCreateCommand": "npm install -g @devcontainers/cli"
+}

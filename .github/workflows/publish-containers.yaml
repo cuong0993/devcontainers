@@ -65,6 +65,6 @@ jobs:
         uses: devcontainers/ci@v0.3
         with:
           subFolder: src/${{ matrix.folder }}
-          imageName: ghcr.io/${{ env.IMAGE_NAME }}/${{ matrix.folder }}
-          cacheFrom: ghcr.io/${{ env.IMAGE_NAME }}/${{ matrix.folder }}
+          imageName: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}/${{ matrix.folder }}
+          cacheFrom: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}/${{ matrix.folder }}
           refFilterForPush: "refs/heads/main"
