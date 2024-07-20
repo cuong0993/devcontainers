@@ -26,8 +26,8 @@ RUN mkdir -p $FLUTTER_HOME &&\
     git clone -b stable https://github.com/flutter/flutter $FLUTTER_HOME
 ENV PATH="${FLUTTER_HOME}/bin:${PATH}"
 RUN chmod +x $FLUTTER_HOME/bin/flutter &&\
-    && git config --global --add safe.directory '*' &&\
-    && flutter precache
+    git config --global --add safe.directory '*' &&\
+    flutter precache
 
 # Install flutter bash completion
 RUN chown 1000:1000 $FLUTTER_HOME -R &&\
